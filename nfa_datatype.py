@@ -113,15 +113,16 @@ class NFA:
 # # Run the test
 # test_nfa_structure()
 
-nfa = NFA()
-nfa.add_state(1)
-nfa.add_state(2)
-nfa.add_state(3)
-nfa.set_start_state(1)
-nfa.add_accept_state(3)
-nfa.add_transition(1, 'a', 2)
-nfa.add_transition(2, 'b', 3)
-nfa.add_epsilon_transition(1, 3)
+# Testing for the graphviz file generation
+# nfa = NFA()
+# nfa.add_state(1)
+# nfa.add_state(2)
+# nfa.add_state(3)
+# nfa.set_start_state(1)
+# nfa.add_accept_state(3)
+# nfa.add_transition(1, 'a', 2)
+# nfa.add_transition(2, 'b', 3)
+# nfa.add_epsilon_transition(1, 3)
 
-nfa.generate_graphviz_file('nfa.dot')
+# nfa.generate_graphviz_file('nfa.dot')
 
