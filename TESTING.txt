@@ -1,0 +1,13 @@
+The following Regex tests should cover an extensive breadth of cases:
+"a"
+"ab"
+"a+b"
+"a*b"
+"ab*"
+"(ab)*"
+"(ab)c"
+"(ab)c*"
+"aa"
+"abb"
+"aba"
+"a|b"
