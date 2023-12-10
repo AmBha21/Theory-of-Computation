@@ -4,7 +4,7 @@ from nfa_datatype import NFA
 from charclass import DOT
 
 # Simple regular expression
-regex = r'ab*'
+regex = r'a*|b|c*'
 
 # Parse the regular expression
 parsed_regex = parse(regex)
