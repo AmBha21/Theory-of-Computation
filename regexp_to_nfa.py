@@ -276,7 +276,7 @@ def nfa_to_graphviz(nfa):
 
 if __name__ == "__main__":
     # r = load_regex()
-    reg = 'a*+aab'
+    reg = 'a*a(bb)*'
     
     pr = polish_regex(reg)
     et = make_exp_tree(pr)
