@@ -3,12 +3,60 @@ import json
 import sys
 from graphviz import Digraph
 
-dfa = {}
-nfa = {}
-nfa_states = []
-dfa_states = []
+def epsilon_closure(states, transition_function):
+    closure = set(states)
+    stack = list(states)
 
-def create_dfa_graph(dfa):
+    while stack:
+        state = stack.pop()
+        for start, symbol, end in transition_function:
+            if start == state and symbol == '$' and end not in closure:
+                closure.add(end)
+                stack.append(end)
+
+    return closure
+
+def move(states, symbol, transition_function):
+    next_states = set()
+    for state in states:
+        for start, sym, end in transition_function:
+            if start == state and sym == symbol:
+                next_states.add(end)
+    return next_states
+
+def compute_dfa(nfa):
+    dfa = {
+        'states': [],
+        'letters': [sym for sym in nfa['letters'] if sym != '$'],  # Exclude epsilon
+        'transition_function': [],
+        'start_states': [],
+        'final_states': []
+    }
+
+    start_state_closure = epsilon_closure(nfa['start_states'], nfa['transition_function'])
+    unprocessed = [start_state_closure]
+    dfa['start_states'] = [start_state_closure]
+
+    while unprocessed:
+        current = unprocessed.pop()
+        dfa['states'].append(current)
+
+        for letter in dfa['letters']:
+            next_state_closure = epsilon_closure(move(current, letter, nfa['transition_function']), nfa['transition_function'])
+
+            if next_state_closure:
+                if next_state_closure not in dfa['states']:
+                    unprocessed.append(next_state_closure)
+
+                dfa['transition_function'].append((current, letter, next_state_closure))
+
+    for state in dfa['states']:
+        if any(s in nfa['final_states'] for s in state):
+            dfa['final_states'].append(state)
+
+    return dfa
+
+def create_dfa_graph(dfa, filename):
     graph = Digraph('finite_state_machine')
     graph.attr(rankdir='LR', size='8,5')
 
@@ -19,7 +67,12 @@ def create_dfa_graph(dfa):
             graph.attr('node', shape='doublecircle')
         else:
             graph.attr('node', shape='circle')
-        graph.node(state_name)
+
+        if state_name in map(lambda s: '_'.join(s), dfa['start_states']):
+            # Special style for start states (e.g., blue color)
+            graph.node(state_name, style='filled', color='lightblue')
+        else:
+            graph.node(state_name)
 
     # Add edges for transitions
     for transition in dfa['transition_function']:
@@ -28,127 +81,16 @@ def create_dfa_graph(dfa):
         end_name = '_'.join(end) if end else 'Ø'
         graph.edge(start_name, end_name, label=letter)
 
-    # Display the graph
-    graph.view()
+    # Save the graph to a file
+    graph.render(filename, format='png', cleanup=True)
 
-def get_power_set(nfa_st):
-    powerset = [[]]
-    for i in nfa_st:
-        for sub in powerset:
-            powerset = powerset + [list(sub) + [i]]
-    return powerset
-
-def load_nfa():
-    global nfa
-    with open(sys.argv[1], 'r') as inpjson:
-        nfa = json.loads(inpjson.read())
-
-def out_dfa():
-    global dfa
-    with open(sys.argv[2], 'w') as outjson:
-        outjson.write(json.dumps(dfa, indent = 4))
-
+# Example usage
+# create_dfa_graph(dfa, 'dfa_graph')
+    
 if __name__ == "__main__":
-    nfa = {
-    "states": [
-        "Q0",
-        "Q1",
-        "Q2"
-    ],
-    "letters": [
-        "0",
-        "1"
-    ],
-    "transition_function": [
-        [
-            "Q0",
-            "0",
-            "Q0"
-        ],
-        [
-            "Q0",
-            "1",
-            "Q1"
-        ],
-        [
-            "Q1",
-            "0",
-            "Q0"
-        ],
-        [
-            "Q1",
-            "1",
-            "Q1"
-        ],
-        [
-            "Q1",
-            "0",
-            "Q2"
-        ],
-        [
-            "Q2",
-            "0",
-            "Q2"
-        ],
-        [
-            "Q2",
-            "1",
-            "Q2"
-        ],
-        [
-            "Q2",
-            "1",
-            "Q1"
-        ]
-    ],
-    "start_states": [
-        "Q0"
-    ],
-    "final_states": [
-        "Q2"
-    ]
-}
-    
-    dfa['states'] = []
-    dfa['letters'] = nfa['letters']
-    dfa['transition_function'] = []
-    
-    for state in nfa['states']:
-        nfa_states.append(state)
+    nfa = {'states': ['Q1', 'Q2', 'Q3', 'Q4'], 'letters': ['$', 'a'], 'transition_function': [['Q1', '$', 'Q2'], ['Q1', '$', 'Q3'], ['Q2', 'a', 'Q4'], ['Q4', '$', 'Q2'], ['Q4', '$', 'Q3']], 'start_states': ['Q1'], 'final_states': ['Q3']}
 
-    dfa_states = get_power_set(nfa_states)
+    dfa = compute_dfa(nfa)
+    print(dfa)
+    create_dfa_graph(dfa, "test")
 
-
-    dfa['states'] = []
-    for states in dfa_states:
-        temp = []
-        for state in states:
-            temp.append(state)
-        dfa['states'].append(temp)
-
-    for states in dfa_states:
-        for letter in nfa['letters']:
-            q_to = []
-            for state in states:
-                for val in nfa['transition_function']:
-                    start = val[0]
-                    inp = val[1]
-                    end = val[2]
-                    if state == start and letter == inp:
-                        if end not in q_to:
-                            q_to.append(end)
-            q_states = []
-            for i in states:
-                q_states.append(i)
-            dfa['transition_function'].append([q_states, letter, q_to])
-
-    dfa['start_states'] = []
-    for state in nfa['start_states']:
-        dfa['start_states'].append([state])
-    dfa['final_states'] = []
-    for states in dfa['states']:
-        for state in states:
-            if state in nfa['final_states'] and states not in dfa['final_states']:
-                dfa['final_states'].append(states)
-    
-    create_dfa_graph(dfa)
