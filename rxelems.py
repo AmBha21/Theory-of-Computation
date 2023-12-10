@@ -25,13 +25,6 @@ from multiplier import ONE, QM, STAR, ZERO, Multiplier
 
 @dataclass(frozen=True)
 class Conc:
-    """
-    A `Conc` (short for "concatenation") is a tuple of `Mult`s i.e. an
-    unbroken string of mults occurring one after the other.
-    e.g. abcde[^fg]*h{4}[a-z]+(subpattern)(subpattern2)
-    To express the empty string, use an empty `Conc`, Conc().
-    """
-
     mults: tuple[Mult, ...]
 
     def __init__(self, /, *mults: Mult):

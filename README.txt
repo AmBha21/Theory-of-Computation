@@ -25,5 +25,4 @@ Required Functions:
 bound.py
     
 
-Status: 
-As of 12/05, only deterministic finite automaton is generated from the input regex. The final solution should be able to create both Deterministic and Non-deterministic.
+*Note: State 0 is assumed to be the starting state
