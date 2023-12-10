@@ -225,17 +225,6 @@ def polish_regex(regex):
     regg = compute_postfix(reg)
     return regg
 
-
-def load_regex():
-    with open(sys.argv[1], 'r') as inpjson:
-        regex = json.loads(inpjson.read())
-    return regex
-
-def output_nfa():
-    global nfa
-    with open(sys.argv[2], 'w') as outjson:
-        outjson.write(json.dumps(nfa, indent = 4))
-
 def nfa_to_dot(nfa):
     dot_str = "digraph NFA {\n"
     dot_str += "\trankdir=LR;\n"
@@ -251,10 +240,6 @@ def nfa_to_dot(nfa):
 
     dot_str += "}"
     return dot_str
-
-def output_dot_file(dot_str, filename):
-    with open(filename, 'w') as file:
-        file.write(dot_str)
 
 def nfa_to_graphviz(nfa):
     dot = Digraph(comment='NFA', format='png')
