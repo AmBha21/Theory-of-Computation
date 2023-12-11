@@ -1,7 +1,5 @@
 # Conversion from Regex to NFA
 from graphviz import Digraph
-import json
-import sys
 
 non_symbols = ['+', '*', '.', '(', ')']
 nfa = {}
