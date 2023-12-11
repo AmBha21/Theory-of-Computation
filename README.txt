@@ -6,6 +6,7 @@ Authors:
 Tooling:
 - Python 2.7.18 or greater can be used to run
 - GraphViz is used to generate the pdf graph visualization seen in nfa_graph.png
+Please refer to requirements.txt for further details
 
 All Sources:
 bound.py
