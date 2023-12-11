@@ -23,11 +23,12 @@ All test files are located in pyTests (a test suite directory)
     - For each test case, a simple overview of how the test is ran as well as a high level overview of what we are expected of each test is given
     Further documentation can be found in TESTING.txt
 
+*Note the pyTests directory holds our python test files and are not part of the source files needed
+
 Though all methods are important, some ones worth mentioning are:
     1. make_exp_tree: found in regexp_to_nfa.py and handles creating an expression tree which is later converted to an nfa
     2. create_dfa_graph: found in nfa_to_dfa.py and handles the conversion of nfa to dfa
 
-    *Note the pyTests directory holds our python test files and are not part of the source files needed
 
 Runner Source:
 To run the program, run `python3 main.py` in the root directory of this project (note that '|' should be replaced by '+' if testing 'or')
