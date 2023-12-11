@@ -42,3 +42,6 @@ pyTests directory contains several files:
         - a transition that starts with 'a'
         - another transition using 'b'
         - a loop of some sort using 'b' transition on accepting state
+
+
+*For each test, the user is given the option to show the test case graph. The graph will appear under /pyTests and will be of format test_case_name.png
