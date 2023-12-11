@@ -26,3 +26,4 @@ bound.py
     
 
 *Note: State 0 is assumed to be the starting state
+All members completed the course evaluation as per extra credit requirements
