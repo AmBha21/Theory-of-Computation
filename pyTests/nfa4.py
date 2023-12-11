@@ -2,6 +2,7 @@
 from graphviz import Digraph
 import json
 import sys
+from pyUnit import *
 
 non_symbols = ['+', '*', '.', '(', ')']
 nfa = {}
@@ -276,15 +277,16 @@ def nfa_to_graphviz(nfa):
 
 if __name__ == "__main__":
     # r = load_regex()
-    reg = 'a*+ab'
+    reg = 'ab*'
     
     pr = polish_regex(reg)
     et = make_exp_tree(pr)
     fa = compute_regex(et)
     arrange_nfa(fa)
-    # output_nfa()
-    print(nfa)
-    nfa_graph = nfa_to_graphviz(nfa)
-    nfa_graph.render('nfagraph')
-    nfa_dot = nfa_to_dot(nfa)
-    output_dot_file(nfa_dot, 'nfa_graph.dot')
+    expected = {'states': ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'], 'letters': ['a', '$', 'b'], 'transition_function': [['Q1', 'a', 'Q2'], ['Q2', '$', 'Q3'], ['Q3', '$', 'Q4'], ['Q3', '$', 'Q5'], ['Q4', 'b', 'Q6'], ['Q6', '$', 'Q4'], ['Q6', '$', 'Q5']], 'start_states': ['Q1'], 'final_states': ['Q5']}
+    run_test(nfa, expected, 'nfa4')
+    if display_graph('nfa4'):
+        nfa_graph = nfa_to_graphviz(nfa)
+        nfa_graph.render('nfa4')
+        nfa_dot = nfa_to_dot(nfa)
+        output_dot_file(nfa_dot, 'nfa_graph.dot')
