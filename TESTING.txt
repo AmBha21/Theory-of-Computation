@@ -1,0 +1,25 @@
+Tests can be found under /pyTests
+
+pyTests directory contains several files:
+1. /dfa_images
+2. /nfa_images
+3. dfa.py
+4. nfa.py
+5. test_setters.py
+
+1. Contains .png images for each dfa test case found in dfa.py
+2. Contains .png images for each nfa test case found in nfa.py
+3. Test suite for dfa graphical representation
+    - a*
+    - a+b
+    - ab
+    - ab*
+4. Test suite for nfa graphical representation
+    - a*
+    - a+b
+    - ab
+    - ab*
+
+5. Small test suite to test the datatypes
+    - regex setter
+    - nfa setter

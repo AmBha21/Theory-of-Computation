@@ -1,5 +1,4 @@
 # Conversion from NFA to DFA
-import json
 import sys
 from graphviz import Digraph
 
@@ -91,6 +90,5 @@ if __name__ == "__main__":
     nfa = {'states': ['Q1', 'Q2', 'Q3', 'Q4'], 'letters': ['$', 'a'], 'transition_function': [['Q1', '$', 'Q2'], ['Q1', '$', 'Q3'], ['Q2', 'a', 'Q4'], ['Q4', '$', 'Q2'], ['Q4', '$', 'Q3']], 'start_states': ['Q1'], 'final_states': ['Q3']}
 
     dfa = compute_dfa(nfa)
-    print(dfa)
     create_dfa_graph(dfa, "test")
 
