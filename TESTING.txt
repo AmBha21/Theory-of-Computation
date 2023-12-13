@@ -10,15 +10,10 @@ pyTests directory contains several files:
 1. Contains .png images for each dfa test case found in dfa.py
 2. Contains .png images for each nfa test case found in nfa.py
 3. Test suite for dfa graphical representation
-    - a*
-    - a+b
-    - ab
-    - ab*
+    - contains 10 tests with 4 "stress tests" simply to test the bounds and constraints of the code
+    
 4. Test suite for nfa graphical representation
-    - a*
-    - a+b
-    - ab
-    - ab*
+    - contains 10 tests with 4 "stress tests" simply to test the bounds and constraints of the code
 
 5. Small test suite to test the datatypes
     - regex setter

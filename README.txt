@@ -30,10 +30,8 @@ Though all methods are important, some ones worth mentioning are:
 
 Runner Source:
 To run the program, run `python3 main.py` in the root directory of this project (note that '|' should be replaced by '+' if testing 'or')
-    - two graphs are then generated
-        1. nfa.png
-        2. dfa.png
-    - both of these graphs show the nfa and dfa representation of the desired regex
+    - respective nfa and dfa representations are printed out to the console
+    - to view graphical representations of our automatons, please refer to pyTests/(dfa|nfa)_images/
 
 To test the program, cd into pyTests and run any of the (dfa|nfa)*.py test cases
     
