@@ -33,6 +33,11 @@ To run the program, run `python3 main.py` in the root directory of this project 
     - respective nfa and dfa representations are printed out to the console
     - to view graphical representations of our automatons, please refer to pyTests/(dfa|nfa)_images/
 
-To test the program, cd into pyTests and run any of the (dfa|nfa)*.py test cases
+Testing:
+There are two test directories: 
+1. pyTests: contains dfa and nfa testing suites
+2. dfa_to_min_dfa: contains test suite of minimizing dfa_images
+
+To test the program, cd into pyTests and run any of the (dfa|nfa)*.py test cases or look at the graphs produced under pyTests/(dfa|nfa)_images/
     
 *Note: State colored in blue is assumed to be the starting state for DFA, and Q1 is the start state for NFA
