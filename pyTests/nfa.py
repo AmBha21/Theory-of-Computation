@@ -97,16 +97,36 @@ def test_ab_dot_ab_star_nfa():
         print(f"Assertion failed: ab.(ab)*_nfa failed. Details: {e}")
         raise
 
+def p_a_or_b_p_or_c_star_nfa():
+    reg = '(a+b)+c*'
+    
+    pr = polish_regex(reg)
+    et = make_exp_tree(pr)
+    fa = compute_regex(et)
+    arrange_nfa(fa)
+
+    expected = {'states': ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12'], 'letters': ['$', 'a', 'b', 'c'], 'transition_function': [['Q1', '$', 'Q2'], ['Q1', '$', 'Q3'], ['Q2', '$', 'Q4'], ['Q2', '$', 'Q5'], ['Q4', 'a', 'Q6'], ['Q6', '$', 'Q7'], ['Q7', '$', 'Q8'], ['Q5', 'b', 'Q9'], ['Q9', '$', 'Q7'], ['Q3', '$', 'Q10'], ['Q3', '$', 'Q11'], ['Q10', 'c', 'Q12'], ['Q12', '$', 'Q10'], ['Q12', '$', 'Q11'], ['Q11', '$', 'Q8']], 'start_states': ['Q1'], 'final_states': ['Q8']}
+    try:
+        assert nfa == expected
+        print("Test (a+b)+c*_nfa passed")
+        nfa_graph = nfa_to_graphviz(nfa)
+        nfa_graph.render('(a+b)+c*_nfa')
+    except AssertionError as e:
+        print(f"Assertion failed: (a+b)+c*_nfa failed. Details: {e}")
+        raise
+
 
 if __name__ == "__main__":
-    print("\nRunning tests 1/5 => ▮▯▯▯")
+    print("\nRunning tests 1/5 => ▮▯▯▯▯▯")
     test_a_star_nfa()
-    print("\nRunning tests 2/5 => ▮▮▯▯")
+    print("\nRunning tests 2/5 => ▮▮▯▯▯▯")
     test_a_or_b_nfa()
-    print("\nRunning tests 3/5 => ▮▮▮▯")
+    print("\nRunning tests 3/5 => ▮▮▮▯▯▯")
     test_ab_nfa()
-    print("\nRunning tests 4/5 => ▮▮▮▮▯")
+    print("\nRunning tests 4/5 => ▮▮▮▮▯▯")
     test_ab_star_nfa()
-    print("\nRunning tests 5/5 => ▮▮▮▮▮")
+    print("\nRunning tests 5/5 => ▮▮▮▮▮▯")
     test_ab_dot_ab_star_nfa()
-
+    print("\nRunning tests 6/6 => ▮▮▮▮▮▮")
+    p_a_or_b_p_or_c_star_nfa()
+    print("\nAll tests passed (6/6)")

@@ -83,20 +83,36 @@ def test_ab_dot_ab_star_dfa():
     try:
         assert dfa == expected
         print("Test ab.(ab)*_dfa passed")
-        create_dfa_graph(dfa, 'ab*_dfa')
+        create_dfa_graph(dfa, 'ab.(ab)*')
     except AssertionError as e:
         print(f"Assertion failed: ab.(ab)*_dfa failed. Details: {e}")
         raise
+    
+def p_a_or_b_p_or_c_star_dfa():
+    _nfa = {'states': ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12'], 'letters': ['$', 'a', 'b', 'c'], 'transition_function': [['Q1', '$', 'Q2'], ['Q1', '$', 'Q3'], ['Q2', '$', 'Q4'], ['Q2', '$', 'Q5'], ['Q4', 'a', 'Q6'], ['Q6', '$', 'Q7'], ['Q7', '$', 'Q8'], ['Q5', 'b', 'Q9'], ['Q9', '$', 'Q7'], ['Q3', '$', 'Q10'], ['Q3', '$', 'Q11'], ['Q10', 'c', 'Q12'], ['Q12', '$', 'Q10'], ['Q12', '$', 'Q11'], ['Q11', '$', 'Q8']], 'start_states': ['Q1'], 'final_states': ['Q8']}
+    nfa = NFA()
+    nfa.set_nfa(_nfa)
+    dfa = compute_dfa(nfa.nfa)
+    expected = {'states': [{'Q10', 'Q8', 'Q3', 'Q11', 'Q5', 'Q1', 'Q2', 'Q4'}, {'Q12', 'Q8', 'Q11', 'Q10'}, {'Q8', 'Q7', 'Q9'}, {'Q8', 'Q7', 'Q6'}], 'letters': ['a', 'b', 'c'], 'transition_function': [({'Q10', 'Q8', 'Q3', 'Q11', 'Q5', 'Q1', 'Q2', 'Q4'}, 'a', {'Q8', 'Q7', 'Q6'}), ({'Q10', 'Q8', 'Q3', 'Q11', 'Q5', 'Q1', 'Q2', 'Q4'}, 'b', {'Q8', 'Q7', 'Q9'}), ({'Q10', 'Q8', 'Q3', 'Q11', 'Q5', 'Q1', 'Q2', 'Q4'}, 'c', {'Q12', 'Q8', 'Q11', 'Q10'}), ({'Q12', 'Q8', 'Q11', 'Q10'}, 'c', {'Q12', 'Q8', 'Q11', 'Q10'})], 'start_states': [{'Q10', 'Q8', 'Q3', 'Q11', 'Q5', 'Q1', 'Q2', 'Q4'}], 'final_states': [{'Q10', 'Q8', 'Q3', 'Q11', 'Q5', 'Q1', 'Q2', 'Q4'}, {'Q12', 'Q8', 'Q11', 'Q10'}, {'Q8', 'Q7', 'Q9'}, {'Q8', 'Q7', 'Q6'}]}
+    try:
+        assert dfa == expected
+        print("Test (a+b)+c*_dfa passed")
+        create_dfa_graph(dfa, '(a+b)+c*_dfa')
+    except AssertionError as e:
+        print(f"Assertion failed: (a+b)+c*_dfa failed. Details: {e}")
+        raise
 
 if __name__ == "__main__":
-    print("\nRunning tests 1/4 => ▮▯▯▯▯")
+    print("\nRunning tests 1/4 => ▮▯▯▯▯▯")
     test_a_star_dfa()
-    print("\nRunning tests 2/4 => ▮▮▯▯▯")
+    print("\nRunning tests 2/4 => ▮▮▯▯▯▯")
     test_a_or_b_dfa()
-    print("\nRunning tests 3/4 => ▮▮▮▯▯")
+    print("\nRunning tests 3/4 => ▮▮▮▯▯▯")
     test_ab_dfa()
-    print("\nRunning tests 4/4 => ▮▮▮▮▯")
+    print("\nRunning tests 4/4 => ▮▮▮▮▯▯")
     test_ab_star_dfa()
-    print("\nRunning tests 5/5 => ▮▮▮▮▮")
+    print("\nRunning tests 5/5 => ▮▮▮▮▮▯")
     test_ab_dot_ab_star_dfa()
-    print("\nAll tests passed (4/4)")
+    print("\nRunning tests 6/6 => ▮▮▮▮▮▮")
+    p_a_or_b_p_or_c_star_dfa()
+    print("\nAll tests passed (6/6)")
