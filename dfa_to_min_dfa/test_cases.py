@@ -39,6 +39,7 @@ def test1():
 	expected = {'states': ['a_b', 'c_d_e', 'f'], 'letters': ['0', '1'], 'transition_function': [['a_b', '0', 'a_b'], ['a_b', '1', 'c_d_e'], ['c_d_e', '0', 'c_d_e'], ['c_d_e', '1', 'f'], ['f', '0', 'f'], ['f', '1', 'f']], 'start_states': ['a'], 'final_states': ['c']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test1_mini')
 		print("Test 1 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: 1 failed. Details: {e}")
@@ -65,13 +66,14 @@ def test2():
 	expected = {'states': ['a', 'b'], 'letters': ['0', '1'], 'transition_function': [['a', '0', 'b'], ['a', '1', 'b'], ['b', '0', 'b'], ['b', '1', 'b']], 'start_states': ['a'], 'final_states': ['b']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test2_mini')
 		print("Test 2 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: 2 failed. Details: {e}")
 		raise
 
 def test3():
-	# testing dfa for regex (a|b)*
+	# testing dfa for regex (a+b)*
 	dfa = {
 		"states": ["q0", "q1", "q2"],
 		"letters": ["a", "b"],
@@ -94,6 +96,7 @@ def test3():
 	expected = {'states': ['q0_q2', 'q1'], 'letters': ['a', 'b'], 'transition_function': [['q0_q2', 'a', 'q1'], ['q0_q2', 'b', 'q1'], ['q1', 'a', 'q0_q2'], ['q1', 'b', 'q0_q2']], 'start_states': ['q0'], 'final_states': ['q0']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test3_mini')
 		print("Test 3 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: 3 failed. Details: {e}")
@@ -120,6 +123,7 @@ def test4():
 	expected = {'states': ['q0_q1', 'q2'], 'letters': ['a', 'b'], 'transition_function': [['q0_q1', 'a', 'q0_q1'], ['q0_q1', 'b', 'q2']], 'start_states': ['q0'], 'final_states': ['q2']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test4_mini')
 		print("Test 4 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 4 failed. Details: {e}")
@@ -149,6 +153,7 @@ def test5():
 	expected = {'states': ['q0_q1_q2'], 'letters': ['a', 'b'], 'transition_function': [['q0_q1_q2', 'a', 'q0_q1_q2'], ['q0_q1_q2', 'b', 'q0_q1_q2']], 'start_states': ['q0'], 'final_states': ['q0']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test5_mini')
 		print("Test 5 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 5 failed. Details: {e}")
@@ -181,6 +186,7 @@ def test6():
 	expected = {'states': ['q0_q1_q2_q3'], 'letters': ['a', 'b'], 'transition_function': [['q0_q1_q2_q3', 'a', 'q0_q1_q2_q3'], ['q0_q1_q2_q3', 'b', 'q0_q1_q2_q3']], 'start_states': ['q0'], 'final_states': ['q0']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test6_mini')
 		print("Test 6 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 6 failed. Details: {e}")
@@ -210,6 +216,7 @@ def test7():
 	expected = {'states': ['q0_q1_q2'], 'letters': ['a', 'b'], 'transition_function': [['q0_q1_q2', 'a', 'q0_q1_q2'], ['q0_q1_q2', 'b', 'q0_q1_q2']], 'start_states': ['q0'], 'final_states': ['q0']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test7_mini')
 		print("Test 7 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 7 failed. Details: {e}")
@@ -234,6 +241,7 @@ def test8():
 	expected = {'states': ['q0'], 'letters': ['a'], 'transition_function': [['q0', 'a', 'q0']], 'start_states': ['q0'], 'final_states': ['q0']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test8_mini')
 		print("Test 8 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 8 failed. Details: {e}")
@@ -264,6 +272,7 @@ def test9():
 	expected = {'states': ['q0_q1_q2'], 'letters': ['a', 'b'], 'transition_function': [['q0_q1_q2', 'a', 'q0_q1_q2'], ['q0_q1_q2', 'b', 'q0_q1_q2']], 'start_states': ['q0'], 'final_states': ['q0']}
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test9_mini')
 		print("Test 9 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 9 failed. Details: {e}")
@@ -308,6 +317,7 @@ def test10():
 	# Check if the minimized DFA matches the expected output
 	try:
 		assert minimized_dfa == expected
+		create_dfa_graph(dfa, 'test10_mini')
 		print("Test 10 passed")
 	except AssertionError as e:
 		print(f"Assertion failed: Test 10 failed. Details: {e}")
