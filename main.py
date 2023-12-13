@@ -8,7 +8,7 @@ from nfa_to_dfa import *
 if __name__ == "__main__":
     #setting the regex pattern
     regex = RegexPattern()
-    regex.set_pattern("ab*")
+    regex.set_pattern("ab.(ab)*")
     
     #converting the regex pattern to nfa
     pr = polish_regex(regex.pattern)
@@ -21,12 +21,12 @@ if __name__ == "__main__":
 
     nfa = NFA()
     nfa.set_nfa(_nfa)
-    nfa.nfa_to_graph('nfa')
+    # nfa.nfa_to_graph('nfa')
 
     #converting the nfa to dfa
     dfa = compute_dfa(nfa.nfa)
     print("===============> DFA <===============")
     print(dfa)
-    create_dfa_graph(dfa, 'dfa')
+    # create_dfa_graph(dfa, 'dfa')
 
 
