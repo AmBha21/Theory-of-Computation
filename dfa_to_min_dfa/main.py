@@ -202,5 +202,5 @@ if __name__ == "__main__":
 
 
     minimized_dfa['transition_function'] = update_transition_function(minimized_dfa)
-    output_dfa_to_graphviz(minimized_dfa, 'minimized_dfa_graph')
+    # output_dfa_to_graphviz(minimized_dfa, 'minimized_dfa_graph')
     print("Minimized DFA:", minimized_dfa)
