@@ -95,7 +95,7 @@ def minimiseDFA(dfa):
 
     return dfa
 
-def output_dfa_to_graphviz(dfa, filename='dfa_graph'):
+def output_dfa_to_graphviz(dfa, filename):
     dot = Digraph(comment='The Minimized DFA')
 
     # Add states to the graph
@@ -144,26 +144,26 @@ def update_transition_function(dfa):
 
 # Call the function with the example DFA
 if __name__ == "__main__":
-    dfa = {
-    "states": ["a", "b", "c", "d", "e", "f"],
-    "letters": ["0", "1"],
-    "transition_function": [
-        ["a", "0", "b"],
-        ["a", "1", "c"],
-        ["b", "0", "a"],
-        ["b", "1", "d"],
-        ["c", "0", "e"],
-        ["c", "1", "f"],
-        ["d", "0", "e"],
-        ["d", "1", "f"],
-        ["e", "0", "e"],
-        ["e", "1", "f"],
-        ["f", "0", "f"],
-        ["f", "1", "f"]
-    ],
-    "start_states": ["a"],
-    "final_states": ["c", "d", "e"]
-}
+#     dfa = {
+#     "states": ["a", "b", "c", "d", "e", "f"],
+#     "letters": ["0", "1"],
+#     "transition_function": [
+#         ["a", "0", "b"],
+#         ["a", "1", "c"],
+#         ["b", "0", "a"],
+#         ["b", "1", "d"],
+#         ["c", "0", "e"],
+#         ["c", "1", "f"],
+#         ["d", "0", "e"],
+#         ["d", "1", "f"],
+#         ["e", "0", "e"],
+#         ["e", "1", "f"],
+#         ["f", "0", "f"],
+#         ["f", "1", "f"]
+#     ],
+#     "start_states": ["a"],
+#     "final_states": ["c", "d", "e"]
+# }
     
     
     # dfa from hw2
@@ -197,10 +197,31 @@ if __name__ == "__main__":
 #     "final_states": ["5", "6"]
 # }
 
+    dfa = {
+    "states": ["A", "B", "C", "D", "E", "F"],
+    "letters": ["x", "y"],
+    "transition_function": [
+        ["A", "x", "B"],
+        ["A", "y", "C"],
+        ["B", "x", "A"],
+        ["B", "y", "D"],
+        ["C", "x", "E"],
+        ["C", "y", "F"],
+        ["D", "x", "E"],
+        ["D", "y", "F"],
+        ["E", "x", "E"],
+        ["E", "y", "F"],
+        ["F", "x", "F"],
+        ["F", "y", "F"]
+    ],
+    "start_states": ["A"],
+    "final_states": ["E", "F"]
+}
+
     minimized_dfa = minimiseDFA(dfa)
     # After minimization, before calling output_dfa_to_graphviz
 
 
     minimized_dfa['transition_function'] = update_transition_function(minimized_dfa)
-    output_dfa_to_graphviz(minimized_dfa, 'minimized_dfa_graph')
+    output_dfa_to_graphviz(minimized_dfa, 'chat_dfa_graph')
     print("Minimized DFA:", minimized_dfa)
