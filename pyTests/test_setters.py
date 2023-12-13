@@ -1,5 +1,9 @@
 import sys
-sys.path.insert(0, '../')
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
 from nfa_datatype import NFA
 from regex_datatype import RegexPattern
 
