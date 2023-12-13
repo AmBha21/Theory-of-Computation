@@ -18,10 +18,6 @@ All files ending with .py are needed to run the program. The python files are as
     3. nfa_to_dfa.py: converts nfa from main.py into dfa graphical form ====Outputs====> dfa.png
     4. nfa_datatype.py + regex_datatype.py: define our two datatypes needed to handle both regex and nfas
 
-All test files are located in pyTests
-    - TESTING.txt highlights files and directories found in /pyTests
-    Further documentation can be found in TESTING.txt
-
 *Note the pyTests directory holds our python test files and are not part of the source files needed
 
 Though all methods are important, some ones worth mentioning are:
@@ -35,8 +31,9 @@ To run the program, run `python3 main.py` in the root directory of this project 
 
 Testing:
 There are two test directories: 
-1. pyTests: contains dfa and nfa testing suites
-2. dfa_to_min_dfa: contains test suite of minimizing dfa_images
+    1. pyTests: contains dfa and nfa testing suites
+    2. dfa_to_min_dfa: contains test suite of minimizing dfa_images
+For further documentation, please refer to TESTING.txt
 
 To test the program, cd into pyTests and run any of the (dfa|nfa)*.py test cases or look at the graphs produced under pyTests/(dfa|nfa)_images/
     
