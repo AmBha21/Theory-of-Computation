@@ -24,7 +24,7 @@ All files ending with .py are needed to run the program. The python files are as
     3. nfa_to_dfa.py: converts nfa from main.py into dfa graphical form ====Outputs====> dfa.png
     4. nfa_datatype.py + regex_datatype.py: define our two datatypes needed to handle both regex and nfas
 
-*Note the pyTests directory holds our python test files and are not part of the source files needed
+*Note the tests directory holds our python test files and are not part of the source files needed
 
 Though all methods are important, some ones worth mentioning are:
     1. make_exp_tree: found in regexp_to_nfa.py and handles creating an expression tree which is later converted to an nfa
