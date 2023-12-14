@@ -33,11 +33,10 @@ To run the program, run `python3 main.py` in the root directory of this project 
     - user will be prompted if they want to see graphical representations of the regex to nfa and dfa
 
 Testing:
-There are two test directories: 
-    1. pyTests: contains dfa and nfa testing suites
-    2. dfa_to_min_dfa: contains test suite of minimizing dfa_images
+There is one testing directory: 
+    1. tests: contains nfa -> dfa , regex -> nfa, and dfa -> min_dfa testing suites
 For further documentation, please refer to TESTING.txt
 
-To test the program, cd into pyTests and run any of the (dfa|nfa)*.py test cases or look at the graphs produced under pyTests/(dfa|nfa)_images/
+To test the program, cd into tests and run any of the (dfa|nfa|min_dfa)*.py test cases or look at the graphs produced under tests/(dfa|nfa|minimizing_images)_images/
     
 *Note: State colored in blue is assumed to be the starting state for DFA, and Q1 is the start state for NFA
