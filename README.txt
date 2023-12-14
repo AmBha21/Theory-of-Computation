@@ -1,3 +1,6 @@
+Quick Video Overview of Our Project (visit link)
+-----> https://www.loom.com/share/48225214ccd24a92b6bcd318221b3c60 <-----
+
 Authors:
 - Amol Bhagavathi
 - Liao Zhu
