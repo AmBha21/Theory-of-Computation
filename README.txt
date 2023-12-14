@@ -31,7 +31,7 @@ Though all methods are important, some ones worth mentioning are:
     2. create_dfa_graph: found in nfa_to_dfa.py and handles the conversion of nfa to dfa
 
 Runner Source:
-To run the program, run `python3 main.py` in the root directory of this project (note that '|' should be replaced by '+' if testing 'or')
+To run the program, run `python3 main.py` in the root directory of this project (note that '|' should be replaced by '+' if testing 'or' and '+' should be replaced by '.' if testing 'and')
     - respective nfa and dfa representations are printed out to the console
     - user will be prompted if they want to see graphical representations of the regex to nfa and dfa
 
