@@ -142,85 +142,41 @@ def update_transition_function(dfa):
     return updated_transition_function
 
 
-# Call the function with the example DFA
-if __name__ == "__main__":
-#     dfa = {
-#     "states": ["a", "b", "c", "d", "e", "f"],
-#     "letters": ["0", "1"],
-#     "transition_function": [
-#         ["a", "0", "b"],
-#         ["a", "1", "c"],
-#         ["b", "0", "a"],
-#         ["b", "1", "d"],
-#         ["c", "0", "e"],
-#         ["c", "1", "f"],
-#         ["d", "0", "e"],
-#         ["d", "1", "f"],
-#         ["e", "0", "e"],
-#         ["e", "1", "f"],
-#         ["f", "0", "f"],
-#         ["f", "1", "f"]
-#     ],
-#     "start_states": ["a"],
-#     "final_states": ["c", "d", "e"]
-# }
-    
-    
+if __name__ == "__main__":    
     # dfa from hw2
-#     dfa = dfa = {
-#     "states": ["0", "1", "2", "3", "4", "5", "6"],
-#     "letters": ["a", "b", "c"],
-#     "transition_function": [
-#         ["0", "a", "1"],
-#         ["0", "c", "0"],
-#         ["0", "b", "6"],
-#         ["1", "a", "2"],
-#         ["1", "b", "3"],
-#         ["1", "c", "4"],
-#         ["2", "a", "3"],
-#         ["2", "b", "5"],
-#         ["2", "c", "5"],
-#         ["3", "a", "4"],
-#         ["3", "b", "5"],
-#         ["3", "c", "6"],
-#         ["4", "a", "2"],
-#         ["4", "b", "5"],
-#         ["4", "c", "6"],
-#         ["5", "a", "5"],
-#         ["5", "b", "5"],
-#         ["5", "c", "6"],
-#         ["6", "a", "6"],
-#         ["6", "b", "6"],
-#         ["6", "c", "6"]
-#     ],
-#     "start_states": ["0"],
-#     "final_states": ["5", "6"]
-# }
-
-    dfa = {
-    "states": ["A", "B", "C", "D", "E", "F"],
-    "letters": ["x", "y"],
+    dfa = dfa = {
+    "states": ["0", "1", "2", "3", "4", "5", "6"],
+    "letters": ["a", "b", "c"],
     "transition_function": [
-        ["A", "x", "B"],
-        ["A", "y", "C"],
-        ["B", "x", "A"],
-        ["B", "y", "D"],
-        ["C", "x", "E"],
-        ["C", "y", "F"],
-        ["D", "x", "E"],
-        ["D", "y", "F"],
-        ["E", "x", "E"],
-        ["E", "y", "F"],
-        ["F", "x", "F"],
-        ["F", "y", "F"]
+        ["0", "a", "1"],
+        ["0", "c", "0"],
+        ["0", "b", "6"],
+        ["1", "a", "2"],
+        ["1", "b", "3"],
+        ["1", "c", "4"],
+        ["2", "a", "3"],
+        ["2", "b", "5"],
+        ["2", "c", "5"],
+        ["3", "a", "4"],
+        ["3", "b", "5"],
+        ["3", "c", "6"],
+        ["4", "a", "2"],
+        ["4", "b", "5"],
+        ["4", "c", "6"],
+        ["5", "a", "5"],
+        ["5", "b", "5"],
+        ["5", "c", "6"],
+        ["6", "a", "6"],
+        ["6", "b", "6"],
+        ["6", "c", "6"]
     ],
-    "start_states": ["A"],
-    "final_states": ["E", "F"]
+    "start_states": ["0"],
+    "final_states": ["5", "6"]
 }
+
 
     minimized_dfa = minimiseDFA(dfa)
     # After minimization, before calling output_dfa_to_graphviz
-
 
     minimized_dfa['transition_function'] = update_transition_function(minimized_dfa)
     output_dfa_to_graphviz(minimized_dfa, 'chat_dfa_graph')
