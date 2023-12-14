@@ -1,5 +1,4 @@
 # Conversion from NFA to DFA
-import sys
 from graphviz import Digraph
 
 def epsilon_closure(states, transition_function):
@@ -82,13 +81,3 @@ def create_dfa_graph(dfa, filename):
 
     # Save the graph to a file
     graph.render(filename, format='png', cleanup=True)
-
-# Example usage
-# create_dfa_graph(dfa, 'dfa_graph')
-    
-if __name__ == "__main__":
-    nfa = {'states': ['Q1', 'Q2', 'Q3', 'Q4'], 'letters': ['$', 'a'], 'transition_function': [['Q1', '$', 'Q2'], ['Q1', '$', 'Q3'], ['Q2', 'a', 'Q4'], ['Q4', '$', 'Q2'], ['Q4', '$', 'Q3']], 'start_states': ['Q1'], 'final_states': ['Q3']}
-
-    dfa = compute_dfa(nfa)
-    create_dfa_graph(dfa, "test")
-

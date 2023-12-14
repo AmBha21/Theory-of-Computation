@@ -257,18 +257,3 @@ def nfa_to_graphviz(nfa):
         dot.edge(start_state, end_state, label=input_symbol)
 
     return dot
-
-# if __name__ == "__main__":
-#     # r = load_regex()
-#     reg = 'a+(ab)*'
-    
-#     pr = polish_regex(reg)
-#     et = make_exp_tree(pr)
-#     fa = compute_regex(et)
-#     arrange_nfa(fa)
-#     # output_nfa()
-#     print(nfa)
-#     nfa_graph = nfa_to_graphviz(nfa)
-#     nfa_graph.render('nfagraph')
-#     nfa_dot = nfa_to_dot(nfa)
-#     output_dot_file(nfa_dot, 'nfa_graph.dot')
