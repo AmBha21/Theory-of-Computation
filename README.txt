@@ -27,7 +27,7 @@ Though all methods are important, some ones worth mentioning are:
 Runner Source:
 To run the program, run `python3 main.py` in the root directory of this project (note that '|' should be replaced by '+' if testing 'or')
     - respective nfa and dfa representations are printed out to the console
-    - to view graphical representations of our automatons, please refer to pyTests/(dfa|nfa)_images/
+    - user will be prompted if they want to see graphical representations of the regex to nfa and dfa
 
 Testing:
 There are two test directories: 

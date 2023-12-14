@@ -4,8 +4,3 @@ class RegexPattern:
 
     def set_pattern(self, pattern : str):
         self.pattern = pattern
-
-
-# regex = RegexPattern()
-# regex.set_pattern("a*")
-# print(regex.pattern)   
