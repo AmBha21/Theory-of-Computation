@@ -1,11 +1,12 @@
-Tests can be found under /pyTests and /dfa_to_min_dfa
+Tests can be found under /tests
 
-pyTests directory contains several files:
+tests directory contains several files:
 1. /dfa_images
 2. /nfa_images
 3. dfa.py
 4. nfa.py
 5. test_setters.py
+6. min_dfa.py
 
 1. Contains .png images for each dfa test case found in dfa.py
 2. Contains .png images for each nfa test case found in nfa.py
@@ -19,6 +20,5 @@ pyTests directory contains several files:
     - regex setter
     - nfa setter
 
-dfa_to_min_dfa contains several files:
-1. test_cases.py: contains the code to run all 10 test cases (which also produce the images found under pyTests/mini_images)
-2. main.py, disjoint_set.py: helper functions for minimizing
+6. Test suite for minimizing dfa graphs
+    - contains 10 tests with dfa to minimization
